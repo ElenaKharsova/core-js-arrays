@@ -21,6 +21,7 @@ module.exports = {
         endOfLine: 'auto',
       },
     ],
+    'no-console' : 0
   },
   plugins: ['prettier'],
   noInlineConfig: true,
