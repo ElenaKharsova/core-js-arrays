@@ -38,21 +38,29 @@ function getIntervalArray(start, end) {
  *    sumArrays([10, 20, 30], [5, 10, 15]) => [15, 30, 45]
  *    sumArrays([-1, 0, 1], [1, 2, 3, 4]) => [0, 2, 4, 4]
  */
-function sumArrays(/* arr */) {
-  /** const arrSum = [];
-  let maxArr = [];
-  if(arr1.length > arr2.length){
-    length = arr2.length;
-    maxArr = arr1;
+function sumArrays(arr1, arr2) {
+  let maxLength;
+  const resultArr = [];
+  let arrMax = [];
+  let arrMin = [];
+  if (arr1.length > arr2.length) {
+    maxLength = arr1.length;
+    arrMax = arr1;
+    arrMin = arr2;
   } else {
-    length = arr1.length;
-    maxArr = arr2;
+    maxLength = arr2.length;
+    arrMax = arr2;
+    arrMin = arr1;
   }
-  for(let i = 0; i < length; i++){
-    arrSum.push(arr1[i] + arr2[i]);
+
+  for (let i = 0; i < maxLength; i++) {
+    if (arrMin[i]) {
+      resultArr.push(arrMax[i] + arrMin[i]);
+    } else {
+      resultArr.push(arrMax[i]);
+    }
   }
-  return (...arrSum, ...maxArr.slice(maxArr.length-length)); */
-  throw new Error('Not implemented');
+  return resultArr;
 }
 
 /**
@@ -67,8 +75,8 @@ function sumArrays(/* arr */) {
  *    findElement(['Array', 'Number', 'string'], 'Date') => -1
  *    findElement([0, 1, 2, 3, 4, 5], 5) => 5
  */
-function findElement(/* arr, value */) {
-  throw new Error('Not implemented');
+function findElement(arr, value) {
+  return arr.indexOf(value);
 }
 
 /**
@@ -153,8 +161,12 @@ function getAverage(arr) {
  *    isSameLength(['orange', 'banana', 'cherry']) => true
  *    isSameLength(['cat', 'dog', 'elephant']) => false
  */
-function isSameLength(/* arr */) {
-  throw new Error('Not implemented');
+function isSameLength(arr) {
+  if (arr.length < 2) {
+    return true;
+  }
+  const length = arr[0]?.length;
+  return arr.every((str) => str.length === length);
 }
 
 /**
@@ -168,8 +180,8 @@ function isSameLength(/* arr */) {
  *    isValueEqualsIndex([2, 1, 0, 4, 5]) => true
  *    isValueEqualsIndex([10, 20, 30, 40, 50]) => false
  */
-function isValueEqualsIndex(/* arr */) {
-  throw new Error('Not implemented');
+function isValueEqualsIndex(arr) {
+  return arr.some((curVal, index) => curVal === index);
 }
 
 /**
@@ -183,8 +195,9 @@ function isValueEqualsIndex(/* arr */) {
  *    insertItem([ 1, 3, 4, 5 ], 2, 1)  => [ 1, 2, 3, 4, 5 ]
  *    insertItem([ 1, 'b', 'c'], 'x', 0) => [ 'x', 1, 'b', 'c' ]
  */
-function insertItem(/* arr, item, index */) {
-  throw new Error('Not implemented');
+function insertItem(arr, item, index) {
+  const temp = arr.splice(index, 0, item);
+  return temp;
 }
 
 /**
@@ -198,8 +211,8 @@ function insertItem(/* arr, item, index */) {
  *    getHead([ 'a', 'b', 'c', 'd'], 3) => [ 'a', 'b', 'c' ]
  *    getHead([ 'a', 'b', 'c', 'd'], 0) => []
  */
-function getHead(/* arr, n */) {
-  throw new Error('Not implemented');
+function getHead(arr, n) {
+  return arr.slice(0, n);
 }
 
 /**
@@ -213,8 +226,8 @@ function getHead(/* arr, n */) {
  *    getTail([ 'a', 'b', 'c', 'd'], 3) => [ 'b', 'c', 'd' ]
  *    getTail([ 'a', 'b', 'c', 'd'], 0) => []
  */
-function getTail(/* arr, n */) {
-  throw new Error('Not implemented');
+function getTail(arr, n) {
+  return n === 0 ? [] : arr.slice(-n);
 }
 
 /**
@@ -229,8 +242,8 @@ function getTail(/* arr, n */) {
  *    doubleArray([0, 1, 2, 3, 4, 5]) => [0, 1, 2, 3, 4, 5, 0, 1, 2, 3, 4, 5]
  *    doubleArray([]) => []
  */
-function doubleArray(/* arr */) {
-  throw new Error('Not implemented');
+function doubleArray(arr) {
+  return arr.concat(arr);
 }
 
 /**
