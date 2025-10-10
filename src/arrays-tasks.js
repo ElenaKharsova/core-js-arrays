@@ -53,7 +53,7 @@ function sumArrays(arr1, arr2) {
     arrMin = arr1;
   }
 
-  for (let i = 0; i < maxLength; i++) {
+  for (let i = 0; i < maxLength; i += 1) {
     if (arrMin[i]) {
       resultArr.push(arrMax[i] + arrMin[i]);
     } else {
